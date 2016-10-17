@@ -12,6 +12,7 @@ using Microsoft.AspNet.Identity.EntityFramework;
 using Microsoft.AspNet.Identity.Owin;
 using Douder.Models;
 using System.Reflection;
+using Microsoft.Owin.Security.OAuth;
 
 [assembly: OwinStartup(typeof(Douder.Startup))]
 
@@ -34,7 +35,23 @@ namespace Douder
             //// Autofac-injected middleware registered with the container.
             //app.UseAutofacMiddleware(container);
 
-            ConfigureAuth(app);
+            ConfigureOAuth(app);
+        }
+
+        public void ConfigureOAuth(IAppBuilder app)
+        {
+            //OAuthAuthorizationServerOptions OAuthServerOptions = new OAuthAuthorizationServerOptions()
+            //{
+            //    AllowInsecureHttp = true,
+            //    TokenEndpointPath = new PathString("/token"),
+            //    AccessTokenExpireTimeSpan = TimeSpan.FromDays(1),
+            //    Provider = new SimpleAuthorizationServerProvider()
+            //};
+
+            //// Token Generation
+            //app.UseOAuthAuthorizationServer(OAuthServerOptions);
+            //app.UseOAuthBearerAuthentication(new OAuthBearerAuthenticationOptions());
+
         }
     }
 }

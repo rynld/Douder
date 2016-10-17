@@ -19,7 +19,7 @@ namespace Douder.Migrations
                 Info="el correo",
                 Name="pepe",
                 CoordX = 1,
-                Coordy = 90
+                CoordY = 90
 
             });
             context.SaveChanges();

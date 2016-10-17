@@ -4,6 +4,7 @@ using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
 using Microsoft.AspNet.Identity.Owin;
 using System.Data.Entity;
+using System.Collections.Generic;
 
 namespace Douder.Models
 {
@@ -17,6 +18,8 @@ namespace Douder.Models
             // Add custom user claims here
             return userIdentity;
         }
+
+        public List<Message> Messages { get; set; }
     }
 
    
