@@ -17,31 +17,37 @@ using Microsoft.Owin.Security.OAuth;
 namespace Douder.Controllers
 {
     
+   
     public class MessageController : ApiController
     {
         
         DouderContext _context;
         ApplicationUserManager _userManager;
 
-        public MessageController(DouderContext con,ApplicationUserManager user_man)
+        public MessageController(DouderContext con, ApplicationUserManager user_man)
         {
             _context = con;
-            _userManager = user_man;
-            
+            _userManager = user_man;            
         }
 
+
+        [Route("api/Messages/isnull")]
+        public IHttpActionResult GetNull()
+        {
+            if (_userManager == null)
+                return BadRequest();
+            return Ok(UserManager.Users.ToList());
+            
+        }
         public MessageController()
         { }
-
 
         
         public IEnumerable<Message> GetAllMessages()
         {
             return _context.Message.ToList();
         }
-
-
-        
+ 
         [ResponseType(typeof(Message))]
         public IHttpActionResult GetMessage(int id)
         {
@@ -83,7 +89,6 @@ namespace Douder.Controllers
 
             return Ok();
         }
-
 
         [Route("api/Messages/currentuser")]
         public IHttpActionResult GetCurrentUser()
